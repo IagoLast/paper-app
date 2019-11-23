@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paper - Editor </title>
+    <script>
+        MathJax = {
+            options: {
+                ignoreHtmlClass: 'editor',
+            },
+            tex: { inlineMath: [['$', '$'], ['$$', '$$']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script async defer src="app.js"></script>
+    <style>
+        html {
+            font-size: 20px;
+        }
+
+        body {
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+
+        #editor,
+        #preview {
+            flex: 1;
+            width: auto;
+            overflow: auto;
+        }
+
+        .editor {
+            height: 100vh;
+            min-width: 600px;
+        }
+
+        #preview {
+            padding: 5rem;
+            height: 100vh;
+            overflow: auto;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: auto;
+            margin: 0;
+        }
+
+        @media print {
+
+            html,
+            body {
+                width: initial;
+                height: initial;
+            }
+
+            #editor {
+                display: none;
+            }
+
+            #preview {
+                display: block;
+                overflow: initial;
+                margin: auto;
+                height: initial;
+            }
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="./style/paper.css" />
+</head>
+
+<body>
+    <div class="editor" id="editor">
+
+    </div>
+    <div id="preview">
+
+    </div>
+</body>
+
+</html>

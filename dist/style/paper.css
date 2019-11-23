@@ -1,0 +1,175 @@
+:root {
+	--font-size: 20px;
+	--primary-color: #2875d9;
+	--bg-color: #ffffff;
+	--text-color__xlight: #ccc;
+	--text-color__light: #886;
+	--text-color: #404044;
+	--text-color__dark: #334;
+	--code-block-bg-color: inherit;
+	-webkit-text-stroke: 0.45px;
+	-webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
+	text-shadow: #fff 0px 1px 1px;
+}
+
+@font-face {
+	font-family: "Computer Modern";
+	src: url('./paper/lm.otf');
+}
+
+#preview {
+	font-family: 'Computer Modern';
+	color: var(--text-color);
+	line-height: 1.6;
+	font-weight: 300;
+	font-size: var(--font-size);
+	text-rendering: geometricPrecision;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Computer Modern';
+	font-weight: 400;
+	color: rgb(11, 11, 11);
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.8rem;
+}
+
+h3 {
+	font-size: 1.6rem;
+}
+
+h4 {
+	font-size: 1.4rem;
+}
+
+h5 {
+	font-size: 1.2rem;
+}
+
+h6 {
+	font-size: 1rem;
+}
+
+p {
+	-webkit-margin-before: 1rem;
+	-webkit-margin-after: 1rem;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+.preview p {
+	font-size: 1rem;
+}
+
+/* Stuff */
+
+code {
+	background: #f2f2f2;
+}
+
+blockquote {
+	margin: 3rem 0;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 1px solid gray;
+}
+
+blockquote, blockquote p {
+	line-height: 1.6;
+	color: gray;
+	padding: 0.1rem 1rem;
+}
+
+mark {
+	background: yellow;
+}
+
+@media print {
+	h1, h2, h3{
+		margin-top: 10mm;
+		page-break-before: always;
+	}
+
+	h1:first-of-type {
+		margin-top: 0.67em; 
+		page-break-before: avoid;
+	}
+}
+
+a {
+	color: var(--primary-color);
+}
+
+img {
+	display: block;
+	margin: auto;
+}
+
+li {
+	margin-top: .5rem;
+}
+
+li p {
+	margin: 0;
+}
+
+strong {
+	letter-spacing: 0.5px;
+	color: var(--text-color__dark);
+}
+
+hr {
+	border: none;
+	border-bottom: 1px solid var(--text-color__xlight);
+}
+
+/*  Tables */
+
+table {
+	padding: 0;
+	word-break: initial;
+}
+
+table tr {
+	border-top: 1px solid #dfe2e5;
+	margin: 0;
+	padding: 0;
+}
+
+table tr:nth-child(2n), thead {
+	background-color: #f8f8f8;
+}
+
+table tr th {
+	font-weight: bold;
+	border: 1px solid #dfe2e5;
+	border-bottom: 0;
+	margin: 0;
+	padding: 6px 13px;
+}
+
+table tr td {
+	border: 1px solid #dfe2e5;
+	margin: 0;
+	padding: 6px 13px;
+}
+
+table tr th:first-child, table tr td:first-child {
+	margin-top: 0;
+}
+
+table tr th:last-child, table tr td:last-child {
+	margin-bottom: 0;
+}
