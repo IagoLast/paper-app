@@ -4,7 +4,7 @@
 
 Take notes in extended markdown and preview them in a clean latex inspired format.
 
-## Getting started
+## Getting started
 
 1. Create a repository on GitHub named `paper-notes`.
 2. Add markdown files
