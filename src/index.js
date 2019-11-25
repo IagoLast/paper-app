@@ -8,7 +8,6 @@ const $preview = document.getElementById('preview');
 const $editor = document.getElementById('editor');
 
 git.loadFile().then(content => {
-    console.warn(content)
     new Editor({
         container: $editor,
         preview: $preview,

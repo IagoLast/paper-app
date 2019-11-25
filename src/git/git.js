@@ -25,6 +25,10 @@ export async function loadFile() {
 
     console.info('Repo cloned');
 
+    const files = await pfs.readdir(dir);
+
+    console.info('File contents', files);
+
     return await pfs.readFile(`${dir}/example.md`, { encoding: 'utf8' });
 }
 
