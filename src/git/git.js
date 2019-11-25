@@ -1,4 +1,4 @@
-export async function loadFile() {
+export async function loadFile({ username, filename }) {
 
     window.dir = '/workspace'
 
@@ -6,9 +6,12 @@ export async function loadFile() {
         console.info('Trying to create workspace dir');
         await pfs.mkdir(dir);
     } catch (err) {
-        console.info('Workspace already exists!');
-        // await pfs.rmdir(dir); // Delete old dir.
-        // await pfs.mkdir(dir);
+        console.info('Workspace already exists! too stupid to check diferences! Delete everything and start again :(');
+        
+        // CHANGA
+        indexedDB.deleteDatabase('fs');
+        indexedDB.deleteDatabase('fs_lock');
+        window.location.reload();
     }
 
     console.info('Cloning git repo');
@@ -17,7 +20,7 @@ export async function loadFile() {
     await git.clone({
         dir,
         corsProxy: 'https://cors.isomorphic-git.org',
-        url: 'https://github.com/iagolast/paper-app',
+        url: `https://github.com/${username}/paper-notes`,
         ref: 'master',
         singleBranch: true,
         depth: 1
@@ -29,7 +32,7 @@ export async function loadFile() {
 
     console.info('File contents', files);
 
-    return await pfs.readFile(`${dir}/example.md`, { encoding: 'utf8' });
+    return await pfs.readFile(`${dir}/${filename}`, { encoding: 'utf8' });
 }
 
 

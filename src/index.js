@@ -7,7 +7,12 @@ import Editor from './editor/editor';
 const $preview = document.getElementById('preview');
 const $editor = document.getElementById('editor');
 
-git.loadFile().then(content => {
+const username = window.prompt('Insert your github username', 'iagolast');
+const filename = window.prompt('Insert the name of the file to edit', 'demo.md');
+
+git.loadFile(
+    { username, filename }
+).then(content => {
     new Editor({
         container: $editor,
         preview: $preview,
