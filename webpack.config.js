@@ -14,10 +14,19 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.txt$/,
+                test: /\.md$/,
                 use: 'raw-loader'
             },
-
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
         ]
     },
     plugins: [
