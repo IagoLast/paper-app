@@ -16,6 +16,15 @@
         };
     </script>
     <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="https://unpkg.com/@isomorphic-git/lightning-fs"></script>
+    <script src="https://unpkg.com/isomorphic-git"></script>
+    <script>
+        // Initialize isomorphic-git with a file system
+        window.fs = new LightningFS('fs')
+        git.plugins.set('fs', window.fs)
+        // I prefer using the Promisified version honestly
+        window.pfs = window.fs.promises
+    </script>
     <script async defer src="app.js"></script>
     <style>
         html {
@@ -49,10 +58,13 @@
 
         @page {
             size: auto;
-            margin: 0;
+            margin: 20mm;
         }
 
         @media print {
+            html {
+                font-size: 16px;
+            }
 
             html,
             body {
@@ -62,12 +74,16 @@
 
             #editor {
                 display: none;
+                padding: 0;
             }
 
             #preview {
                 display: block;
+                width: auto;
+                height: auto;
                 overflow: initial;
                 margin: auto;
+                padding: 0;
                 height: initial;
             }
         }

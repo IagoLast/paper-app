@@ -1,109 +1,120 @@
-___
 
 
-# Paper
+# Testing
 
+## Contenidos
 
----
+Que es un test?
 
-<small style="display:block; text-align: right;"> 2019 - IagoLast </small>
+Factores de calidad: requisitos funcionales vs no funcionales
 
+Que es un test funcional?
 
+Que es un test automático?
 
-Paper es un editor de markdown creado y pensado para hacer mis apuntes mas bonitos.
-Os dejo algunos ejemplos de lo que se puede hacer:
+Para que sirve un test?
 
+Por que es importante tener tests?
 
+Que caracteriza un buen test?
 
-# Heading 1
+Que tipos de tests existen?
 
-## Heading 2
+Que proporcion de cada tipo de test debemos tener?
 
-### Heading 3
+Como implementar un buen test? 
 
-#### Heading 4
+​	Que parte del codigo testear? (publico vs privado)
 
-##### Heading 5
+​	Cuando hacer un mock
 
-###### Heading 6
+​	Que test uso? ¿unidad, integracion?
 
+​	Mi test tarda, que hago? (crear suites: smoke-tests)
 
+Testing de Front-End
 
-## Text Formating
+​	Testear un componente
 
-Regular
+​	Testear un estilo (css)
 
-**bold**
+​	Testear una web
 
-*italic*,
+​	Testear una app
 
-~~strike~~
+Testing de Back-End
 
-==hightlight==
+​	Testear una Api
 
-`inline-code`
+​	Testear un orquestador
 
-*emphasis*
+​	Testear la logica de negocio
 
-<!--comment-->
+​	Testear la capa de acceso a datos
 
-## Cites
+Testing Genérico
 
->This is a cite
-
-## Inline math:
-
-Inline math  $X^2 + 1 = 1$ works fine.
-
-## Math Block:
-
-$$
-\begin{align*}
-y = y(x,t) &= A e^{i\theta} \\\\
-&= A (\cos \theta + i \sin \theta) \\\\
-&= A (\cos(kx - \omega t) + i \sin(kx - \omega t)) \\\\
-&= A\cos(kx - \omega t) + i A\sin(kx - \omega t)  \\\\
-&= A\cos \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big) + i A\sin \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big)  \\\\
-&= A\cos \frac{2\pi}{\lambda} (x - v t) + i A\sin \frac{2\pi}{\lambda} (x - v t)
-\end{align*}
-$$
-
-## Tables:
-
-| First Column | Second Column | Third Column |
-| ------------ | ------------- | ------------ |
-| One          | Two           | Three        |
-| Four         | Five          | Six          |
-
-## Code:
-
-```js
-import someCode from 'someLibrary';
-```
+Ejemplos.
 
 
 
-## Lists
+## Reflexiones (TODO)
 
-- First item
-- Second item
-  - Third item
-    - Another level
+- Cuando probar interaciones?
+- DETESTABLE: CODIGO SIN TESTS O DIFICIL DE TESTEAR ;)
 
-## Links
 
-[This is a link](www.google.com)
 
-## Footnote
 
-Some thing 
 
-## Superscripts
 
-Example^1^
+### ¿Qué es un test?
 
-Example~2~
+Podríamos definir un test como *"un **proceso** que nos permite obtener **información** de un sistema."*
 
-## Images
+Según esta definición, abrir a mano el navegador para comprobar cómo se pinta un botón o preguntarle a un amigo qué le parece nuestra app también serían tests.
 
-<img height="300px" src="https://image.freepik.com/vector-gratis/garabatos-ciencia_23-2147501583.jpg"/>
+Es importante darse cuenta de que la mayoría de los programadores aunque sea de forma inconsciente estan haciendo tests. Imaginemos a Bob, que acaba de escribir un código para mostrar el IVA que se aplica a las compras de su tienda online. Después de escribir todo el código lo primero que hace Bob es abrir su web, seleccionar un producto y comprobar que el valor de IVA mostrado es el correcto.  Este proceso en el que Bob abre su navegador, elige un producto y comprueba el valor del IVA es un <u>test manual</u>.
+
+
+
+## Requisitos funcionales y No funcionales
+
+Tradicionalmente cuando hablamos de testing en software lo hacemos en referencia a los requisitos funcionales, es decir nuestros tests prueban que el software hace qué tiene que hacer y no el cómo.
+
+Por ejemplo si estamos probando una calculadora comprobamos que `suma(2, 2) = 4`  pero no probamos el consumo de CPU o cuanto tarda el sistema en devolver el resultado. 
+
+Conviene tener en cuenta que existen una serie de requisitos <u>no funcionales</u> que tendremos que cumplir si queremos obtener un software de calidad por ejemplo: Seguridad, Usabilidad, Accesibilidad, Rendimiento o Escalabilidad.
+
+En resumen:
+
+- [Requisitos funcionales](https://es.wikipedia.org/wiki/Requisito_funcional): (**QUÉ**) Funcionalidad que debe proporcionar el sistema.
+- [Requisitos no funcionales](https://es.wikipedia.org/wiki/Requisito_no_funcional): (**CÓMO**) Criterios específicos para juzgar el comportamiento.
+
+
+
+## Tests automáticos vs no automáticos
+
+Cómo se ha dicho anteriormente cualquier proceso que permita obtener información de nuestro software puede considerarse un test. 
+
+Para sacar el mayor provecho posible a los tests nos interesa que sean **automáticos**, **fiables** y **rápidos** de forma que se integran perfectamente en nuestro proceso de desarrollo pudiendo ser ejecutados en cualquier momento para conocer el comportamiento del sistema.
+
+Volviendo al ejemplo de la tienda online. Imaginemos que Bob acaba de programar la issue y ejecuta los siguientes tests manuales:
+
+- Abrir web
+
+- Elegir un producto cualquiera, una maquinilla de afeitar.
+
+- Comprobar al precio final es de 40€ con un IVA de un 21%
+
+  
+
+Al mes siguiente a un compañero de Bob le encargan programar un nuevo sistema de tickets regalo con descuentos para el Black Friday. Cómo solo tiene 1 día para hacerlo, se pone a programar inmediatamente, en cuanto cree que lo tiene listo realiza un <u>test manual</u>:
+
+- Abrir la tienda online
+- Elegir un producto cualquiera, una maquinilla de afeitar.
+- Añade un código de descuento de 5€
+- Comprueba que el precio final es de 15€ con un descuento de 5€ .
+
+
+

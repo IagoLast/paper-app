@@ -14,7 +14,7 @@
 
 @font-face {
 	font-family: "Computer Modern";
-	src: url('./paper/lm.otf');
+	src: url('./paper/cmunrm.ttf');
 }
 
 #preview {
@@ -98,7 +98,6 @@ mark {
 
 @media print {
 	h1, h2, h3{
-		margin-top: 10mm;
 		page-break-before: always;
 	}
 
