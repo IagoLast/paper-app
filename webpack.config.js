@@ -1,11 +1,13 @@
 const path = require('path');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const WorkerPlugin = require('worker-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js'
+        filename: 'app.js',
+        globalObject: 'self',
     },
     module: {
         rules: [
@@ -26,11 +28,12 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }
+            },
         ]
     },
     plugins: [
-        new MonacoWebpackPlugin()
+        new MonacoWebpackPlugin(),
+        new WorkerPlugin(),
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),

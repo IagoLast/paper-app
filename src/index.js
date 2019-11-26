@@ -3,6 +3,7 @@ import "@babel/polyfill";
 import git from './git/git';
 import parser from './parser/parser';
 import Editor from './editor/editor';
+// import content from './demo.md';
 
 const $preview = document.getElementById('preview');
 const $editor = document.getElementById('editor');

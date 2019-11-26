@@ -7,9 +7,6 @@
 	--text-color: #404044;
 	--text-color__dark: #334;
 	--code-block-bg-color: inherit;
-	-webkit-text-stroke: 0.45px;
-	-webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
-	text-shadow: #fff 0px 1px 1px;
 }
 
 @font-face {
@@ -23,18 +20,12 @@
 	line-height: 1.6;
 	font-weight: 300;
 	font-size: var(--font-size);
-	text-rendering: geometricPrecision;
+	/* text-rendering: geometricPrecision; */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-#write {
-	max-width: 914px;
-	text-align: justify;
-}
-
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Computer Modern';
 	font-weight: 400;
 	color: rgb(11, 11, 11);
 }
@@ -64,17 +55,18 @@ h6 {
 }
 
 p {
+	font-size: 1rem;
 	-webkit-margin-before: 1rem;
 	-webkit-margin-after: 1rem;
 	-webkit-margin-start: 0px;
 	-webkit-margin-end: 0px;
 }
 
-.preview p {
-	font-size: 1rem;
-}
-
 /* Stuff */
+
+mjx-container[jax="CHTML"][display="true"] {
+	margin: 2rem auto !important; 
+}
 
 code {
 	background: #f2f2f2;
@@ -94,17 +86,6 @@ blockquote, blockquote p {
 
 mark {
 	background: yellow;
-}
-
-@media print {
-	h1, h2, h3{
-		page-break-before: always;
-	}
-
-	h1:first-of-type {
-		margin-top: 0.67em; 
-		page-break-before: avoid;
-	}
 }
 
 a {
@@ -137,6 +118,7 @@ hr {
 /*  Tables */
 
 table {
+	width: 100%;
 	padding: 0;
 	word-break: initial;
 }
@@ -171,4 +153,14 @@ table tr th:first-child, table tr td:first-child {
 
 table tr th:last-child, table tr td:last-child {
 	margin-bottom: 0;
+}
+
+@media print {
+	h1, h2, h3 {
+		page-break-before: always;
+	}
+	h1:first-of-type {
+		margin-top: 0.67em;
+		page-break-before: avoid;
+	}
 }

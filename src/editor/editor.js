@@ -1,4 +1,5 @@
 import * as monaco from 'monaco-editor';
+const worker = new Worker('../parser/parser-web-worker.js', { type: 'module' });
 
 export default class Editor {
     constructor({ container, parser, preview, value }) {
@@ -7,13 +8,17 @@ export default class Editor {
             language: "markdown"
         });
 
-        preview.innerHTML = parser.render(this._editor.getValue());
-        window.MathJax.typeset();
 
         this._editor.getModel().onDidChangeContent(() => {
-            preview.innerHTML = parser.render(this._editor.getValue());
-            window.MathJax.typeset();
+            worker.postMessage([this._editor.getValue()])
         });
+
+        worker.addEventListener('message', e => {
+            preview.innerHTML = e.data;
+            window.MathJax.typeset();
+        })
+
+        worker.postMessage([value])
 
 
         // Debounce this
