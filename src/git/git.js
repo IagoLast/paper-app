@@ -1,24 +1,18 @@
+import * as git from 'isomorphic-git'
+import filesystem from '../filesystem/filesystem.service';
+
+export const WORKSPACE_PATH = '/workspace'
+git.plugins.set('fs', filesystem.fs);
+
+
 export async function loadFile({ username, filename }) {
+    const worspacePath = await filesystem.createWorkspace();
 
-    window.dir = '/workspace'
 
-    try {
-        console.info('Trying to create workspace dir');
-        await pfs.mkdir(dir);
-    } catch (err) {
-        console.info('Workspace already exists! too stupid to check diferences! Delete everything and start again :(');
-
-        // CHANGA
-        indexedDB.deleteDatabase('fs');
-        indexedDB.deleteDatabase('fs_lock');
-        window.location.reload();
-    }
-
-    console.info('Cloning git repo');
-
+    console.info(`Cloning git repo for ${username} into ${worspacePath}`);
 
     await git.clone({
-        dir,
+        dir: worspacePath,
         corsProxy: 'https://cors.isomorphic-git.org',
         url: `https://github.com/${username}/paper-notes`,
         ref: 'master',
@@ -28,11 +22,11 @@ export async function loadFile({ username, filename }) {
 
     console.info('Repo cloned');
 
-    const files = await pfs.readdir(dir);
+    const files = await filesystem.readdir(worspacePath);
 
-    console.info('File contents', files);
+    console.info('Files in workspace', files);
 
-    return await pfs.readFile(`${dir}/${filename}`, { encoding: 'utf8' });
+    return filesystem.readFile(`${worspacePath}/${filename}`, { encoding: 'utf8' });
 }
 
 

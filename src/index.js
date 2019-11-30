@@ -1,24 +1,23 @@
 import "@babel/polyfill";
 
-import git from './git/git';
-import parser from './parser/parser';
-import Editor from './editor/editor';
-// import content from './demo.md';
+import React from 'react';
+import ReactDOM from 'react-dom'
 
-const $preview = document.getElementById('preview');
-const $editor = document.getElementById('editor');
+import App from './app';
+import state from './state/state';
 
-const username = window.prompt('Insert your github username', 'iagolast');
-const filename = window.prompt('Insert the name of the file to edit', 'demo.md');
 
-git.loadFile(
-    { username, filename }
-).then(content => {
-    new Editor({
-        container: $editor,
-        preview: $preview,
-        parser,
-        value: content,
-    })
-})
+class AppWrapper extends React.Component {
+    constructor() {
+        super();
+    }
+    render() {
+        return <App state={state.get()} />
+    }
+    componentDidMount() {
+        state.on('update', () => { this.forceUpdate() });
+    }
+}
 
+
+ReactDOM.render(<AppWrapper />, document.getElementById('app'));
