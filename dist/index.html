@@ -27,6 +27,7 @@
         // I prefer using the Promisified version honestly
         window.pfs = window.fs.promises
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.16.2/styles/a11y-light.css">
     <script async defer src="app.js"></script>
     <style>
         html {
@@ -60,12 +61,12 @@
 
         @page {
             size: auto;
-            margin: 20mm;
+            margin: 20mm 25mm;
         }
 
         @media print {
-            html {
-                font-size: 16px;
+            :root {
+                --font-size: 16px;
             }
 
             html,
@@ -87,6 +88,7 @@
                 margin: auto;
                 padding: 0;
                 height: initial;
+                overflow-anchor: none;
             }
         }
     </style>

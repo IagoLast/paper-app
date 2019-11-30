@@ -79,6 +79,12 @@ $$
 
 ```js
 import someCode from 'someLibrary';
+
+export default class Demo {
+    constructor() {
+        const DEMO_CONST = 123;
+    }
+}
 ```
 
 

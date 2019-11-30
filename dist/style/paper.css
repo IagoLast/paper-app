@@ -163,4 +163,8 @@ table tr th:last-child, table tr td:last-child {
 		margin-top: 0.67em;
 		page-break-before: avoid;
 	}
+
+	pre code {
+		font-size: .8rem;
+	}
 }

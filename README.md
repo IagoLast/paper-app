@@ -15,10 +15,8 @@ Take notes in extended markdown and preview them in a clean latex inspired forma
 
 ## Roadmap
 
-- Syntax highlighting
 - Save changes
 - Better navigation
 - Version control with UI
 - Themes
 - Web components
-- Speed: Parse markdown in a web-worker.

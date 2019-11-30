@@ -6,12 +6,7 @@ export async function loadFile({ username, filename }) {
         console.info('Trying to create workspace dir');
         await pfs.mkdir(dir);
     } catch (err) {
-        console.info('Workspace already exists! too stupid to check diferences! Delete everything and start again :(');
-
-        // CHANGA
-        indexedDB.deleteDatabase('fs');
-        indexedDB.deleteDatabase('fs_lock');
-        window.location.reload();
+        console.info('Workspace already exists! ');
     }
 
     console.info('Cloning git repo');
