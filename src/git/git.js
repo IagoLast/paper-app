@@ -1,19 +1,16 @@
+import filesystem, { fs, pfs, WOKRSPACE_PATH } from '../filesysyem/filesystem.service';
+
+git.plugins.set('fs', fs)
+
 export async function loadFile({ username, filename }) {
 
-    window.dir = '/workspace'
-
-    try {
-        console.info('Trying to create workspace dir');
-        await pfs.mkdir(dir);
-    } catch (err) {
-        console.info('Workspace already exists! ');
-    }
+    filesystem.initWorkspace();
 
     console.info('Cloning git repo');
 
 
     await git.clone({
-        dir,
+        dir: WOKRSPACE_PATH,
         corsProxy: 'https://cors.isomorphic-git.org',
         url: `https://github.com/${username}/paper-notes`,
         ref: 'master',
@@ -23,11 +20,11 @@ export async function loadFile({ username, filename }) {
 
     console.info('Repo cloned');
 
-    const files = await pfs.readdir(dir);
+    const files = filesystem.listFiles(WOKRSPACE_PATH);
 
     console.info('File contents', files);
 
-    return await pfs.readFile(`${dir}/${filename}`, { encoding: 'utf8' });
+    return await filesystem.readFile(`${WOKRSPACE_PATH}/${filename}`);
 }
 
 
