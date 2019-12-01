@@ -12,6 +12,8 @@ export default class Editor {
             onChange(this._editor.getValue())
         });
 
+        this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_O, () => alert('TODO: Open files'));
+
         // Debounce this
         window.addEventListener("resize", this._editor.layout);
     }
