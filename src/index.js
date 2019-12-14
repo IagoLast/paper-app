@@ -1,18 +1,16 @@
 import "@babel/polyfill";
-
+import filesystem, { WOKRSPACE_PATH } from './filesysyem/filesystem.service';
 import git from './git/git';
 import Paper from './Paper';
-// import content from './demo.md';
 
-const $preview = document.getElementById('preview');
-const $editor = document.getElementById('editor');
 
-// const username = window.prompt('Insert your github username', 'iagolast');
-// const filename = window.prompt('Insert the name of the file to edit', 'demo.md');
+(async () => {
+    const username = 'iagolast';
+    const filename = 'demo.md';
 
-git.loadFile(
-    { username: 'iagolast', filename: 'demo.md' }
-).then(content => {
+    await filesystem.initWorkspace();
+    await git.clone({ username });
+
+    const content = await filesystem.readFile(`${WOKRSPACE_PATH}/${filename}`);
     new Paper(content);
-})
-
+})();

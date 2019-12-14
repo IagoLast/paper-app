@@ -13,6 +13,8 @@ export default class Editor {
         });
 
         this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_O, () => alert('TODO: Open files'));
+        this._editor.addCommand(monaco.KeyCode.Escape, () => alert('Exit'));
+
 
         // Debounce this
         window.addEventListener("resize", this._editor.layout);

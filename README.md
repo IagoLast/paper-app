@@ -15,6 +15,7 @@ Take notes in extended markdown and preview them in a clean latex inspired forma
 
 ## Roadmap
 
+- Open files
 - Save changes
 - Better navigation
 - Version control with UI
