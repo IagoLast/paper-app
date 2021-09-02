@@ -8,7 +8,7 @@
     "@iktakahiro/markdown-it-katex": "^3.1.0",
     "@isomorphic-git/lightning-fs": "^3.4.1",
     "commonmark": "^0.29.0",
-    "isomorphic-git": "^0.70.8",
+    "isomorphic-git": "^1.8.2",
     "markdown-it": "^10.0.0",
     "markdown-it-highlight": "^0.2.0",
     "markdown-it-katex": "^2.0.3",
