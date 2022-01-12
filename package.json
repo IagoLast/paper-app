@@ -9,7 +9,7 @@
     "@isomorphic-git/lightning-fs": "^3.4.1",
     "commonmark": "^0.29.0",
     "isomorphic-git": "^0.70.8",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "markdown-it-highlight": "^0.2.0",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-mark": "^3.0.0",
